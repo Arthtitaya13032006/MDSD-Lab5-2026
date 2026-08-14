@@ -239,11 +239,16 @@ class MyApp extends StatelessWidget {
 ```
 
 > ✅ **Checkpoint 1.1** รันแอปและกดปุ่ม "🤍 บันทึกเป็นรายการโปรด" ที่สินค้าชิ้นใดก็ได้ ทดสอบว่า (ก) ตัวเลขในไอคอนหัวใจที่ AppBar เพิ่มขึ้นถูกต้อง และ (ข) ปุ่มของสินค้าที่กดไปแล้วเปลี่ยนเป็น "❤️ บันทึกแล้ว" และกดซ้ำไม่ได้ ถ่ายภาพหน้าจอที่เห็นทั้งสองอย่างนี้พร้อมกัน แล้วเปิดไฟล์ `item_card.dart` และ `item_list_section.dart` ให้เห็น constructor ที่ต้องรับพารามิเตอร์ส่งต่อ (Prop Drilling) ชัดเจน แนบส่งในรายงาน
+<img width="1916" height="1013" alt="Screenshot 2026-08-14 130428" src="https://github.com/user-attachments/assets/dbda5f45-f4e8-4dea-bafd-d09325b2d54c" />
+<img width="1915" height="1016" alt="Screenshot 2026-08-14 131356" src="https://github.com/user-attachments/assets/96e3eabd-bcc1-4696-aee1-b799eeb3cfc8" />
+<img width="848" height="246" alt="Screenshot 2026-08-14 131512" src="https://github.com/user-attachments/assets/3db34696-5be2-4b35-b3df-46bec214a5c4" />
+<img width="856" height="275" alt="Screenshot 2026-08-14 131558" src="https://github.com/user-attachments/assets/50482184-f459-4f81-8929-9d7658f3dd16" />
 
 **คำถาม**: ถ้าต้องเพิ่มหน้าจอ `FavoritesPage` ที่ต้องแสดงรายการที่บันทึกไว้ชุดเดียวกัน แต่ถูก push แยกออกไปเป็นอีก Route หนึ่ง จะเกิดปัญหาอะไรกับโค้ดแบบ Prop Drilling นี้ จงเขียนคำตอบสั้น ๆ 
 
-```text
-
+```
+พอข้าม Route ไปหน้าใหม่มันจะดึงข้อมูลมาใช้ตรงๆ ไม่ได้เลย เพราะ State มันถูกขังไว้ใน HomePage แค่หน้าเดียว ทำให้แชร์ข้อมูลข้ามหน้าจอไม่ได้ โค้ดก็จะต้องโยนค่าส่งไปส่งมาจนพันกันยุ่งเหยิงไปหมด
+แถมถ้าเราไปกดลบรายการโปรดในหน้าใหม่ หน้า HomePage เดิมที่อยู่ข้างหลังมันก็จะไม่รู้เรื่อง และไม่ยอมอัปเดตหน้าจอ (Rebuild) ให้เปลี่ยนตามอัตโนมัติด้วย
 ```
 
 ---
