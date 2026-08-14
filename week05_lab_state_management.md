@@ -784,6 +784,11 @@ class HomePage extends ConsumerWidget {
 ตอนกดลบทั้งหมด: ใช้ context.read เพราะเป็นการยิงคำสั่งลบแค่ครั้งเดียวจบ ไม่ต้องให้ปุ่มคอยดักฟังการอัปเดตำ
 ```
 - ปุ่มต้องแสดงเฉพาะเมื่อมีรายการโปรดอย่างน้อย 1 รายการเท่านั้น (ถ้ารายการว่างอยู่แล้วไม่ต้องแสดงปุ่มนี้)
+<img width="1918" height="1019" alt="image" src="https://github.com/user-attachments/assets/e6a37475-eae2-4067-be5a-47fd839ea9c6" />
+<img width="1913" height="1021" alt="image" src="https://github.com/user-attachments/assets/02dbc089-0f9b-44e0-942d-1524dc4ab348" />
+<img width="1912" height="1019" alt="image" src="https://github.com/user-attachments/assets/69a363f7-4371-47f9-a54e-e3c14dd8e970" />
+<img width="1919" height="1020" alt="image" src="https://github.com/user-attachments/assets/5fa648fc-5641-4a2f-ac41-737c40996d70" />
+
 ### โจทย์ที่ 3 (ท้าทายเพิ่ม ไม่บังคับ)
 
 ทำโจทย์ที่ 1 และ 2 ซ้ำอีกครั้งในโปรเจกต์ทดลอง Riverpod (ส่วนที่ 4) 
