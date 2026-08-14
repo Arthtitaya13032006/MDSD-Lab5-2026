@@ -533,8 +533,23 @@ class HomePage extends StatelessWidget {
 
 บันทึกคำตอบที่ได้จาก Gemini 
 
-```text
+```
+สรุปการวิเคราะห์การเลือกใช้ State Management สำหรับแต่ละฟีเจอร์ในแอป Flutter ของคุณดังนี้ครับ:
+1. Dark Mode / Light Mode (ส่งผลต่อทุกหน้าจอในแอป)
+เครื่องมือที่แนะนำ: Riverpod หรือ Provider (Global State)
+เหตุผล: เป็น App-wide State ที่อยู่ที่ระดับ Root (MaterialApp) และส่งผลกระทบต่อ UI ทั่วทั้งแอป การใช้ setState ปกติไม่สามารถส่งสถานะข้ามหน้าได้โดยไม่ทำ Prop Drilling หรือสร้างความซับซ้อนเกินไป การใช้ Provider / Riverpod จะช่วยให้ทุกหน้าจอเข้าถึงและเปลี่ยน Theme ได้สะดวกรวดเร็ว
 
+2. ตัวนับจำนวนคนถูกใจ ที่ต้องซิงค์ระหว่างหน้ารายการกับหน้ารายละเอียด
+เครื่องมือที่แนะนำ: Riverpod (หรือ Provider) (Shared State / Entity State)
+เหตุผล: เป็น Cross-screen State ที่ข้อมูลชิ้นเดียวกัน (เช่น จำนวน Like ของสินค้า ID นั้น ๆ) ต้องแสดงผลและอัปเดตตรงกันใน 2 หน้าจอที่ไม่ได้อยู่ใน Widget Tree เดียวกัน การใช้ Riverpod (เช่น productLikeProvider(productId) โดยใช้ .family) หรือ Provider จะช่วยจัดการ State ตาม ID สินค้าได้อย่างมีประสิทธิภาพ และเมื่อหน้ารายละเอียดเปลี่ยนค่า หน้ารายการจะ rebuild เฉพาะจุดทันที
+
+3. Animation กระพริบของไอคอนหัวใจตอนกดถูกใจ (ใช้เฉพาะใน Widget เดียว)
+เครื่องมือที่แนะนำ: setState (ร่วมกับ AnimationController ใน StatefulWidget)
+เหตุผล: เป็น Ephemeral / Local State ที่มีขอบเขตและผลกระทบอยู่แค่ภายในตัวปุ่มหัวใจนั้นเพียงตัวเดียว ไม่จำเป็นต้องให้หน้าอื่นหรือ Widget ภายนอกรับรู้ การใช้ setState ถือเป็น Best Practice ที่เรียบง่าย รวดเร็ว และไม่ทำให้โค้ดซับซ้อนเกินความจำเป็น (No Overengineering)
+
+สรุปเกณฑ์การตัดสินใจสั้น ๆ:
+setState จัดการ UI/Animation ชั่วคราวเฉพาะใน Widget ตัวเอง
+Provider / Riverpod จัดการข้อมูลที่ต้องแชร์ข้ามหน้าจอ (Cross-screen) หรือข้อมูลระดับทั้งแอป (App-wide)
 ```
 
 
