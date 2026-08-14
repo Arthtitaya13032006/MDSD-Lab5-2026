@@ -746,6 +746,14 @@ class HomePage extends ConsumerWidget {
 
 > ✅ **Checkpoint 4.2** เขียนตารางเปรียบเทียบสั้น ๆ ว่าตอนแปลงจาก Provider เป็น Riverpod ต้องเปลี่ยนอะไรบ้าง (เช่น `ChangeNotifier` → `StateNotifier`, `StatelessWidget` → `ConsumerWidget`, `context.watch` → `ref.watch`) อย่างน้อย 4 คู่เทียบ
 
+| ฝั่ง Provider | ฝั่ง Riverpod | อธิบายการเปลี่ยนแปลง |
+| :--- | :--- | :--- |
+| `ChangeNotifier` | `StateNotifier` / `Notifier` | เปลี่ยนคลาสแม่ที่ใช้สำหรับเก็บและจัดการ State ของข้อมูล |
+| `StatelessWidget` | `ConsumerWidget` | อัปเกรดคลาสของหน้าจอเพื่อให้รับพารามิเตอร์ `WidgetRef ref` มาใช้งานได้ |
+| `context.watch<T>()` | `ref.watch(provider)` | เปลี่ยนวิธีการดึงข้อมูลมาแสดงผลและติดตามการอัปเดต (Rebuild) |
+| `context.read<T>()` | `ref.read(provider.notifier)` | เปลี่ยนวิธีการเรียกใช้คำสั่ง (เช่น กดปุ่มเพิ่ม/ลบ) โดยไม่อัปเดต UI ซ้ำซ้อน |
+| `ChangeNotifierProvider` | `ProviderScope` | เปลี่ยนตัวคลุมรากของแอป (Root) ที่ไฟล์ `main.dart` |
+
 ---
 
 ## ส่วนที่ 5 (ทำด้วยตนเอง): ออกแบบฟีเจอร์เพิ่มด้วยตัวเอง
